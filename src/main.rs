@@ -35,7 +35,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut file_buf = String::new();
     let _ = file.read_to_string(&mut file_buf);
     let parsed: Result<TaskItem, _> = from_str(&file_buf);
-    println!("{:?}", parsed);
     let root_task = parsed.unwrap_or(TaskItem::TaskCategory( TaskCategory { name: String::from("root"), child: vec![] } ));
 
     // setup terminal

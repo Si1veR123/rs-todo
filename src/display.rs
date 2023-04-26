@@ -130,7 +130,6 @@ pub fn run_app<B: Backend>(terminal: &mut Terminal<B>, header_task: TaskItem, na
                 match key.kind {
                     KeyEventKind::Press => {
                         match key.code {
-                            KeyCode::Char('q') => return Ok(todo_list.header_task),
                             KeyCode::Left => {
                                 match todo_list.typing_state {
                                     InputState::TypeSelect => todo_list.typing_state = InputState::TaskInput(String::new()),
@@ -156,6 +155,7 @@ pub fn run_app<B: Backend>(terminal: &mut Terminal<B>, header_task: TaskItem, na
                                         '-' => todo_list.remove(),
                                         '=' => todo_list.add(),
                                         '+' => todo_list.add(),
+                                        'q' => return Ok(todo_list.header_task),
                                         _ => ()
                                     }
                                 }
